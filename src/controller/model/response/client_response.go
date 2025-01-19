@@ -10,8 +10,8 @@ type ClientResponse struct {
 	FantasyName       string
 	Cnpj              string
 	StateRegistration string
-	Cep               string
 	Sector            string
+	Cep               string
 	Number            string
 	Address           string
 	City              string
@@ -23,6 +23,6 @@ type ClientResponse struct {
 	Cpf               string
 	Gender            string
 	TelephoneNumber   string
-	CellPhoneNumber   string
+	CellphoneNumber   string
 	Email             string
 }
