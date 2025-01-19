@@ -6,9 +6,9 @@ import (
 )
 
 func InitRoutes(r *gin.RouterGroup) {
-	r.GET("/getClientsNaturalPerson", controller.GetClientsNaturalPerson)
-	r.GET("/getClientsLegalEntity", controller.GetClientsLegalEntity)
-	r.POST("/registerClient", controller.RegisterClient)
-	r.PUT("/updateClient/:clientId", controller.UpdateClient)
-	r.DELETE("/deleteClient/:clientId", controller.DeleteClient)
+	r.GET("/getClientsNaturalPerson", clients.GetClientsNaturalPerson)
+	r.GET("/getClientsLegalEntity", clients.GetClientsLegalEntity)
+	r.POST("/registerClient", clients.RegisterClient)
+	r.PUT("/updateClient/:clientId", clients.UpdateClient)
+	r.DELETE("/deleteClient/:clientId", clients.DeleteClient)
 }
