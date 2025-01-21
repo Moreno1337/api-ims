@@ -3,12 +3,15 @@ package main
 import (
 	"log"
 
+	"github.com/Moreno1337/api-ims/src/configuration/logger"
 	"github.com/Moreno1337/api-ims/src/controller/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
 
 func main() {
+	logger.Info("Starting API")
+
 	err := godotenv.Load()
 
 	if err != nil {
