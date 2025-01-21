@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/Moreno1337/api-ims/src/configuration/logger"
-	"github.com/Moreno1337/api-ims/src/controller/routes"
+	"github.com/Moreno1337/api-ims/src/client/controller/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -22,7 +22,7 @@ func main() {
 
 	clientsGroup := router.Group("/clients")
 
-	routes.InitRoutes(clientsGroup)
+	clientroutes.InitRoutes(clientsGroup)
 
 	if err := router.Run(":8080"); err != nil {
 		log.Fatal(err)

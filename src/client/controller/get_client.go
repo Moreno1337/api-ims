@@ -1,12 +1,12 @@
-package clients
+package controller
 
 import (
 	"net/http"
 
 	"github.com/Moreno1337/api-ims/src/configuration/logger"
 	"github.com/Moreno1337/api-ims/src/configuration/validation"
-	"github.com/Moreno1337/api-ims/src/controller/model/request"
-	"github.com/Moreno1337/api-ims/src/controller/model/response"
+	"github.com/Moreno1337/api-ims/src/client/controller/model/request"
+	"github.com/Moreno1337/api-ims/src/client/controller/model/response"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap/zapcore"
 )
