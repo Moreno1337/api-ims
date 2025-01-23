@@ -2,4 +2,4 @@ package controller
 
 import "github.com/gin-gonic/gin"
 
-func DeleteClient(c *gin.Context) {}
+func (cc *clientControllerInterface) DeleteClient(c *gin.Context) {}

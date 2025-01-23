@@ -5,10 +5,10 @@ import (
 	"github.com/Moreno1337/api-ims/src/client/controller"
 )
 
-func InitRoutes(r *gin.RouterGroup) {
-	r.GET("/getClientsNaturalPerson", controller.GetClientsNaturalPerson)
-	r.GET("/getClientsLegalEntity", controller.GetClientsLegalEntity)
-	r.POST("/registerClient", controller.RegisterClient)
-	r.PUT("/updateClient/:clientId", controller.UpdateClient)
-	r.DELETE("/deleteClient/:clientId", controller.DeleteClient)
+func InitRoutes(r *gin.RouterGroup, clientController controller.ClientControllerInterface) {
+	r.GET("/getClientsNaturalPerson", clientController.GetClientsNaturalPerson)
+	r.GET("/getClientsLegalEntity", clientController.GetClientsLegalEntity)
+	r.POST("/registerClient", clientController.RegisterClient)
+	r.PUT("/updateClient/:clientId", clientController.UpdateClient)
+	r.DELETE("/deleteClient/:clientId", clientController.DeleteClient)
 }

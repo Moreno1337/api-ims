@@ -3,8 +3,10 @@ package main
 import (
 	"log"
 
-	"github.com/Moreno1337/api-ims/src/configuration/logger"
+	"github.com/Moreno1337/api-ims/src/client/controller"
 	"github.com/Moreno1337/api-ims/src/client/controller/routes"
+	"github.com/Moreno1337/api-ims/src/client/model/service"
+	"github.com/Moreno1337/api-ims/src/configuration/logger"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -18,11 +20,14 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
+	clientService := service.NewClientDomainService()
+	clientController := controller.NewClientControllerInterface(clientService)
+
 	router := gin.Default()
 
 	clientsGroup := router.Group("/clients")
 
-	clientroutes.InitRoutes(clientsGroup)
+	clientroutes.InitRoutes(clientsGroup, clientController)
 
 	if err := router.Run(":8080"); err != nil {
 		log.Fatal(err)

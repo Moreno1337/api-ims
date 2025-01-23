@@ -4,6 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetClientsNaturalPerson(c *gin.Context) {}
+func (cc *clientControllerInterface) GetClientsNaturalPerson(c *gin.Context) {}
 
-func GetClientsLegalEntity(c *gin.Context) {}
+func (cc *clientControllerInterface) GetClientsLegalEntity(c *gin.Context) {}

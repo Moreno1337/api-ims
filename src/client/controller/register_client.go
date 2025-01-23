@@ -5,7 +5,7 @@ import (
 
 	"github.com/Moreno1337/api-ims/src/client/controller/model/request"
 	"github.com/Moreno1337/api-ims/src/client/model"
-	"github.com/Moreno1337/api-ims/src/client/model/service"
+	"github.com/Moreno1337/api-ims/src/client/view"
 	"github.com/Moreno1337/api-ims/src/configuration/logger"
 	"github.com/Moreno1337/api-ims/src/configuration/validation"
 	"github.com/gin-gonic/gin"
@@ -15,7 +15,7 @@ var (
 	ClientDomainInterface model.ClientDomainInterface
 )
 
-func RegisterClient(c *gin.Context) {
+func (cc *clientControllerInterface) RegisterClient(c *gin.Context) {
 	journey := zap.String("journey","RegisterClient")
 
 	logger.Info("RegisterClient controller initialized", journey)
@@ -31,12 +31,11 @@ func RegisterClient(c *gin.Context) {
 	}
 
 	domain := model.NewClientDomain(&request)
-	service := service.NewClientDomainService()
 	
-	if err := service.RegisterClient(domain); err != nil {
+	if err := cc.service.RegisterClient(domain); err != nil {
 		c.JSON(err.Code, err)
 	}
 
 	logger.Info("Client registered succesfully", journey)
-	c.String(http.StatusOK, "")
+	c.JSON(http.StatusOK, view.ConvertDomainToResponse(domain))
 }
