@@ -4,11 +4,14 @@ import (
 	"time"
 
 	"github.com/Moreno1337/api-ims/src/client/controller/model/request"
-	rest_err "github.com/Moreno1337/api-ims/src/configuration/err"
 )
 
+type ClientDomainInterface interface {
+	GetClientDomain() clientDomain
+}
+
 func NewClientDomain(cr *request.ClientRequest) ClientDomainInterface {
-	return &ClientDomain{
+	return &clientDomain{
 		cr.Id,
 		cr.CompanyName,
 		cr.FantasyName,
@@ -32,29 +35,29 @@ func NewClientDomain(cr *request.ClientRequest) ClientDomainInterface {
 	}
 }
 
-type ClientDomain struct {
-	Id                uint32
-	CompanyName       string
-	FantasyName       string
-	Cnpj              string
-	StateRegistration string
-	Sector            string
-	Cep               string
-	Number            string
-	Address           string
-	City              string
-	Neighborhood      string
-	Complement        string
-	State             string
-	PersonName        string
-	DateOfBirth       time.Time
-	Cpf               string
-	Gender            string
-	TelephoneNumber   string
-	CellphoneNumber   string
-	Email             string
+type clientDomain struct {
+	id                uint32
+	companyName       string
+	fantasyName       string
+	cnpj              string
+	stateRegistration string
+	sector            string
+	cep               string
+	number            string
+	address           string
+	city              string
+	neighborhood      string
+	complement        string
+	state             string
+	personName        string
+	dateOfBirth       time.Time
+	cpf               string
+	gender            string
+	telephoneNumber   string
+	cellphoneNumber   string
+	email             string
 }
 
-type ClientDomainInterface interface {
-	RegisterClient() *rest_err.RestErr
+func (c clientDomain) GetClientDomain() clientDomain {
+	return c
 }

@@ -5,6 +5,7 @@ import (
 
 	"github.com/Moreno1337/api-ims/src/client/controller/model/request"
 	"github.com/Moreno1337/api-ims/src/client/model"
+	"github.com/Moreno1337/api-ims/src/client/model/service"
 	"github.com/Moreno1337/api-ims/src/configuration/logger"
 	"github.com/Moreno1337/api-ims/src/configuration/validation"
 	"github.com/gin-gonic/gin"
@@ -30,7 +31,9 @@ func RegisterClient(c *gin.Context) {
 	}
 
 	domain := model.NewClientDomain(&request)
-	if err := domain.RegisterClient(); err != nil {
+	service := service.NewClientDomainService()
+	
+	if err := service.RegisterClient(domain); err != nil {
 		c.JSON(err.Code, err)
 	}
 
