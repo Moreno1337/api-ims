@@ -2,11 +2,14 @@ package validators
 
 import (
 	"errors"
+	"os"
 	"regexp"
 	"time"
 
 	valueobject "github.com/Moreno1337/api-ims/internal/clients/domain/value-object"
 )
+
+var EMAIL_REGEX = `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
 
 func ValidateCpf(cpf valueobject.Cpf) error {
 	if len(cpf) != 14 {
@@ -104,7 +107,7 @@ func ValidateCellphoneNumber(c valueobject.CellphoneNumber) error {
 }
 
 func ValidateEmail(email valueobject.Email) error {
-	emailRegex := regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`)
+	emailRegex := regexp.MustCompile(os.Getenv(EMAIL_REGEX))
 
 	for _, value := range email {
 		if !emailRegex.MatchString(value) {
